@@ -33,5 +33,4 @@ public class Building {
         Building fordHall = new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4);
         System.out.println(fordHall);
     }
-
 }
