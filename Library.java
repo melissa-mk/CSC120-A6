@@ -21,8 +21,12 @@ public class Library extends Building{
      * @param title
      */
     public void addTitle(String title) {
-        collection.put(title, true);
-        System.out.println(title + " has been added.");
+        if(!containsTitle(title)){
+            collection.put(title, true);
+            System.out.println(title + " has been added.");
+        }else {
+            System.out.println(title + " was already in the library.");
+        }
     }
 
     /**
@@ -31,9 +35,14 @@ public class Library extends Building{
      * @return the removed title
      */
     public String removeTitle(String title){
-        collection.remove(title, false);
-        System.out.println(title + " has been removed.");
-        return title;
+        if(!containsTitle(title)){
+            System.out.println(title + " does not exist in this library.");
+            return null;
+        }else {
+            collection.remove(title, false);
+            System.out.println(title + " has been removed.");
+            return title;
+        }
     }
 
     /**
@@ -41,16 +50,24 @@ public class Library extends Building{
      * @param title
      */
     public void checkOut(String title) {
-        collection.put(title, false);
-        System.out.println(title + " has been checked out.");
+        if(containsTitle(title)&&isAvailable(title)) {
+            collection.put(title, false);
+            System.out.println(title + " has been checked out.");
+        }else {
+            System.out.println(title + " is not in this library. (either checked out or doesn't belong in this library)");
+        }
     }
 
     /**
-     * updates book statys when the book is returned
+     * updates book status when the book is returned
      */
     public void returnBook(String title) {
-        collection.put(title, true);
-        System.out.println(title + " has been returned.");
+        if(containsTitle(title)&&!isAvailable(title)) {
+            collection.put(title, true);
+            System.out.println(title + " has been returned.");
+        }else{
+            System.out.println(title + " either doesn't belong in this library or was never checked out.");
+        }
     }
 
     /**

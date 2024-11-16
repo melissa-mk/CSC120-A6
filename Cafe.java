@@ -28,7 +28,6 @@ public class Cafe extends Building {
     public void sellCoffee(int size, int nSugarPackets, int nCreams) {
         if ((this.nCoffeeOunces < size)||(this.nSugarPackets < nSugarPackets)||(this.nCreams<nCreams)||this.nCups==0) {
             this.restock();
-            throw new RuntimeException("Hold on! We are restocking our inventory");
         }
         this.nCoffeeOunces -= size;
         this.nSugarPackets -= nSugarPackets;

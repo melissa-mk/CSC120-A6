@@ -10,6 +10,7 @@ public class House extends Building {
    * @param name
    * @param address
    * @param nFloors
+   * @param hasDiningRoom
    */
   public House(String name, String address, int nFloors, boolean hasDiningRoom) {
     super(name, address, nFloors);
@@ -38,7 +39,7 @@ public class House extends Building {
    * getter method
    * @return number of residents living in the house
    */
-  public int getNResidents() {
+  public int nResidents() {
     return this.residents.size();
   }
 
